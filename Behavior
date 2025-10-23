@@ -1,0 +1,29 @@
+////////////////BEHAVIOR TO DOS//////////////////
+
+1. Establish a behavior for how the rust program moves through the graph
+
+/////////////////////////////////////////////////
+
+
+Python:
+  1. Receives account username
+  2. Records account followers and following as sets
+  3. Puts the intersection of sets in a JSON file
+  4. Returns JSON
+
+Rust:
+  1. Gets user input for two accounts A, Z
+  2. Creates nodes for the two accounts
+  2. Sends account A to Python
+  3. Receives JSON (List of mutuals that the username sent has)
+  5. Checks if the new mutual username is Z
+    a. If yes, creates an edge. moves to djikstras between A and Z
+    b. if no, continue on
+  4. Checks if nodes already exists
+    a. If yes, checks if an edge between the two nodes exists
+      i. if yes, discards. continue
+      ii. if no, adds edge, continue
+    b. if no, creates a new node and edge
+  5. Continues until all new nodes added
+  6. Moves breadthly through nodes and repeats process.
+  
