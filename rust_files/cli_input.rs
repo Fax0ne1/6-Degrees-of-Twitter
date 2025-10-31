@@ -5,7 +5,7 @@ use std::{
     io::{self, Write},
     process::{Command, Stdio},
 };
-
+use serde::Deserialize;
 
 fn main(){
     //similar lgical set up to doing it in C/C++
@@ -116,5 +116,28 @@ fn read_file(path: &str) -> io::Result<String>{
         println!("File contents:\n{}", text);
         Ok(())
     } 
+    */
+}
+
+//creating a json parser
+//structure to hold the data, can change as needed
+#[define(Debug, Deserialize)]
+struct json_data{
+    username: String,
+    mutuals: int,
+}
+
+//function to read the json data
+fn read_json(file: &str)-> Result<json_data, Box<dyn std::error::Error>>{
+    let data = fs::read_to_string(file)?;
+    let file_data: json_data = serde_json::from_str(&data)?;
+    Ok(data)
+
+    /*
+        fn main() -> Result<(), Box<dyn std::error::Error>> {
+            let config = read_config("config.json")?;
+            println!("{:#?}", config);
+            Ok(())
+        }
     */
 }
