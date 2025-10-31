@@ -1,234 +1,103 @@
-🕸️ Alphabet Network
-A
-
-Following: C, F, M, T
-
-Followers: D, H, M, P, X
-
-Mutuals: M
-
-````````````````````````````````````````````````````
-B
-
-Following: A, D, E, M, V
-
-Followers: E, F, L, M, W
-
-Mutuals: E, M
-
-
-````````````````````````````````````````````````````
-C
-
-Following: H, J, M
-
-Followers: A, M, R
-
-Mutuals: M
-
-````````````````````````````````````````````````````
-D
-
-Following: A, F, H, J, M, Y
-
-Followers: B, H, P, W
-
-Mutuals: H
-
-````````````````````````````````````````````````````
-E
-
-Following: B, L, M, R
-
-Followers: B, M, O, U
-
-Mutuals: B, M
-
-````````````````````````````````````````````````````
-F
-
-Following: M, Q, R, Z
-
-Followers: A, D, H, J, M
-
-Mutuals: M
-
-````````````````````````````````````````````````````
-G
-
-Following: H, I, J, M
-
-Followers: M, U, W
-
-Mutuals: M
-
-````````````````````````````````````````````````````
-H
-
-Following: D, F, M, S
-
-Followers: C, D, G, M, R, T
-
-Mutuals: D, M
-
-````````````````````````````````````````````````````
-I
-
-Following: G, M, O, P, W
-
-Followers: G, M, R, Y
-
-Mutuals: G, M
-
-````````````````````````````````````````````````````
-J
-
-Following: D, F, M, R, X
-
-Followers: C, D, G, M, Z
-
-Mutuals: D, M
-
-````````````````````````````````````````````````````
-K
-
-Following: L, M, N, O, P
-
-Followers: M, N, O
-
-Mutuals: M, O, N
-
-````````````````````````````````````````````````````
-L
-
-Following: E, M, O, P, R
-
-Followers: B, E, M, O, P
-
-Mutuals: E, M, O, P
-
-````````````````````````````````````````````````````
-M 
-
-Following: A, B, C, E, F, G, H, I, J, K, L, N, O, R, T
-
-Followers: A, B, C, E, F, G, H, I, J, K, L, N, O, R, T
-
-Mutuals: A, B, C, E, F, G, H, I, J, K, L, N, O, R, T
-
-````````````````````````````````````````````````````
-N
-
-Following: K, L, M, O, P, Q, S, W
-
-Followers: K, M, O, S
-
-Mutuals: K, M, O, S
-
-````````````````````````````````````````````````````
-O
-
-Following: K, L, M, N, P
-
-Followers: E, K, L, M, N, P
-
-Mutuals: K, L, M, N, P
-
-````````````````````````````````````````````````````
-P
-
-Following: A, K, L, M, O, R, S
-
-Followers: D, L, N, O, R, U
-
-Mutuals: L, O, R
-
-````````````````````````````````````````````````````
-Q 
-
-Following: Z
-
-Followers: F, N
-
-Mutuals: —
-
-````````````````````````````````````````````````````
-R
-
-Following: E, F, H, J, L, M, O, P
-
-Followers: C, E, H, I, L, M, P, T
-
-Mutuals: E, H, L, M, P
-
-````````````````````````````````````````````````````
-S
-
-Following: H, M, N, P, R, T, U
-
-Followers: H, N, P, R, M
-
-Mutuals: H, N, M, R, P
-
-````````````````````````````````````````````````````
-T
-
-Following: A, M, R, S
-
-Followers: H, M, S, Y
-
-Mutuals: M, S
-
-````````````````````````````````````````````````````
-U
-
-Following: E, G, M, R, X
-
-Followers: E, M, S, Y
-
-Mutuals: M
-
-````````````````````````````````````````````````````
-V
-
-Following: B, M, W
-
-Followers: M, X
-
-Mutuals: M
-
-````````````````````````````````````````````````````
-W
-
-Following: B, D, G, M, V, Y
-
-Followers: B, G, M, N, V, Z
-
-Mutuals: G, M, V
-
-````````````````````````````````````````````````````
-X
-
-Following: A, J, M, Y
-
-Followers: J, M, U, W
-
-Mutuals: M
-
-````````````````````````````````````````````````````
-Y
-
-Following: D, I, M, T
-
-Followers: D, I, T, W, X
-
-Mutuals: I, T
-
-````````````````````````````````````````````````````
-Z
-
-Following: M, W
-
-Followers: F, J, Q
-
-Mutuals: —
+A:
+	followers - G M Z
+	following - C E H O U Z
+
+B: 
+	followers - S R T N I Q
+	following - E K U W X 
+
+C: 
+	followers - U Z V Y P A R G H Q O L I D F W K X E N J S
+	following - D E I J O P R S U X
+
+D: 
+	followers - N E C G J M L Q
+	following - C E G I M O T Z
+
+E: 
+	followers - C Q K A B T S G D 
+	following - C D J O U W Y
+
+F: 
+	followers - J K L 
+	following - C G H J K O S U X Z
+
+G: 
+	followers - K V J Q F D N L 
+	following - A C D E H S X Z
+
+H: 
+	followers - U V A W F S K G R X L
+	following - C M N O R T X Y
+
+I: 
+	followers - T D V K C P J 
+	following - B C O U Y
+
+J: 
+	followers - K P F C E 
+	following - C D F G I N P R S
+
+K: 
+	followers - F N M L B O T X
+	following - C E F G H I J N P Q V W X
+
+L: 
+	followers - X Q V U
+	following - C D F G H K O P T W Y
+
+M: 
+	followers - N U Q W H D
+	following - A D K P W X
+
+N: 
+	followers - P J K H X Z
+	following - B C D G K M O P Y
+
+O: 
+	followers - C A X H S F D Z N W V L I E
+	following - C K T U V W Z
+
+P: 
+	followers - N C L K Y M J R
+	following - C I J N S U W
+
+Q: 
+	followers - K 
+	following - B C D E G L M S U W
+
+R: 
+	followers - H C J V
+	following - B C H P U 
+
+S: 
+	followers - F J T X C Q P G W
+	following - B C E H O U V
+
+T: 
+	followers - O H L D Y X
+	following - B E I K S U X Z
+
+U: 
+	followers - E R A I F Q C Y O S W P B T 
+	following - C H L M
+
+V: 
+	followers - S K O Z
+	following - C G H I L O R W X 
+
+W: 
+	followers - Q L O K Z M B V E P 
+	following - C H M O S U Y
+
+X: 
+	followers - H G T C K B M V F
+	following - C H K L N O S T
+
+Y: 
+	followers - I W H E N L
+	following - C P T U
+
+Z: 
+	followers - T D F A O G
+	following - A C N O V W
