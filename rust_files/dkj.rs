@@ -1,10 +1,12 @@
+//File containing code for Dijktra's algorithm.
+
 //crates used
 use std::cmp::Ordering;
 use std::collections::BinaryHeap;
 
-//defining the priority state for the priority queue
+//defining the priority state for the queue, to create a priority queue
 #[derive(Copy, Clone, PartialEq, Eq)] //calling the macro for helper functions to run on the structure
-struct state{
+struct State{
     cost: usize,
     position: usize,
     //right now: reach position x with cost y
@@ -30,8 +32,7 @@ impl PartialOrd for State {
 
 //function for the dijktra traversal.
 //Arguments: graph double vector defined by the structure (the graph) the start node, target node
-//return vector (list) of usize
-fn dkj_adj_list(graph: &Vec<Vec<(usize,usize)>>, start: usize, maybe_target: Option<usize>) -> Vec<usize>{
+pub fn dkj_adj_list(graph: &Vec<Vec<(usize,usize)>>, start: usize, maybe_target: Option<usize>) -> (Vec<usize>, Vec<Option<usize>>){
     let n = graph.len(); //create a variable for the graph length.
 
     //define the final distance to be 'infinity' (really big number)
@@ -61,7 +62,7 @@ fn dkj_adj_list(graph: &Vec<Vec<(usize,usize)>>, start: usize, maybe_target: Opt
             if next_cost < dist[next]{
                 dist[next] = next_cost;
                 prev[next] = Some(position);
-                heap.push(State {cost: next_cost, postion: next});
+                heap.push(State {cost: next_cost, position: next});
             }
         }
     }
@@ -70,11 +71,19 @@ fn dkj_adj_list(graph: &Vec<Vec<(usize,usize)>>, start: usize, maybe_target: Opt
 }
 
 //function to rebuild the path
-fn build_path(start: usize, dest: usize, prev: &[Option<usize>]) -> Vec<usize>{
+pub fn build_path(start: usize, dest: usize, prev: &[Option<usize>]) -> Vec<usize>{
+    //defining variables
+    let mut path = Vec::new();
+    let mut current = Some(dest);
 
+    //loop
+    while let Some(v) = current{
+        path.push(v);
+        if v == start {break;}
+        current = prev[v];
+    }
+    path.reverse();
+    if path.first().copied() == Some(start) { path } else { Vec::new() }
 }
-
-fn main(){
-    //example usage, keeping for refrence, change to work with the actual graph.
-    //let dist = dijkstra_adj_list(&graph, start, Some(target));
-}
+    //example of how to use this
+    //let (dist, prev) = dkj_adj_list(&graph, 0, None);

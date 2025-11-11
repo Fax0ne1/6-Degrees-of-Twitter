@@ -1,32 +1,11 @@
-//crates to use cli arguments and file reading in rust
+//crates to use cli arguments
 use std::{
-    env,
-    fs,
-    io::{self, Write},
+    io::Write,
     process::{Command, Stdio},
 };
-use serde::Deserialize;
-
-fn main(){
-    //similar lgical set up to doing it in C/C++
-    let args: Vec<String> = env::args().collect();
-
-    //checking for the correct amount of arguments expected
-    if args.len() < 2{
-        eprintln!("Usage: cargo run -- <python_script.py>");
-        std::process::exit(1);
-    }
-
-    //saving the python file argument as a variable
-    let script = &args[1];
-    println!("Python Script accepted");
-    
-    //running the script and saving the return as a variable
-    let pydata = run_py(script);
-}
 
 //function to run the python script, reading in from stdout w/ python
-fn run_py_output(script: &str)-> String{
+pub fn run_py_output(script: &str)-> String{
     //run the script and captue the outout
     let output = Command::new("python3") //launch python as a subprocess
         .arg(script)
@@ -47,9 +26,9 @@ fn run_py_output(script: &str)-> String{
 }
 
 //funciton to read 'post' to python script using stdin
-fn run_py_input(script: &str, input_data: str)->String{
+pub fn run_py_input(script: &str, input_data: &str)->String{
     //similar logic as above, spawn python as a subprocess
-    let mut child = Commond::new("python3")
+    let mut child = Command::new("python3")
         .arg(script)
         .stdin(Stdio::piped()) //allow the writing to python
         .stdout(Stdio::piped()) //capture output of python
@@ -59,7 +38,7 @@ fn run_py_input(script: &str, input_data: str)->String{
     //writing the conditions to python's stdin
     {
         let mut stdin = child.stdin.take().expect("Failed to open stdin");
-        writeln!(stdin, "{}",input_dat).expect("Failed write to stdin");
+        writeln!(stdin, "{}",input_data).expect("Failed write to stdin");
         
     }//signal EOF to python
 
@@ -83,6 +62,8 @@ fn run_py_input(script: &str, input_data: str)->String{
      */
 }
 
+
+/* 
 //run C code function, same subproccess logic as python function
 fn run_c(script: &str)->String{
     //spawn the process. Add .arg(arguments after new if need arguments)
@@ -104,40 +85,5 @@ fn run_c(script: &str)->String{
 
     */
 } 
+*/
 
-//function to open and read a file (probably .txt)
-fn read_file(path: &str) -> io::Result<String>{
-    let cont = read_to_string(path)?; //'?' is for error propagation, need to return a value for it to work
-    Ok(cont)
-
-    /* How to use (refrence)
-    fn main() -> io::Result<()> {
-        let text = read_file("data.txt")?;
-        println!("File contents:\n{}", text);
-        Ok(())
-    } 
-    */
-}
-
-//creating a json parser
-//structure to hold the data, can change as needed
-#[define(Debug, Deserialize)]
-struct json_data{
-    username: String,
-    mutuals: int,
-}
-
-//function to read the json data
-fn read_json(file: &str)-> Result<json_data, Box<dyn std::error::Error>>{
-    let data = fs::read_to_string(file)?;
-    let file_data: json_data = serde_json::from_str(&data)?;
-    Ok(data)
-
-    /*
-        fn main() -> Result<(), Box<dyn std::error::Error>> {
-            let config = read_config("config.json")?;
-            println!("{:#?}", config);
-            Ok(())
-        }
-    */
-}
