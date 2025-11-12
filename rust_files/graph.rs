@@ -65,57 +65,15 @@ impl<N, W> Graph<N, W>{
 
 }
 
-//still works on the structure above, W needs clone though (copy itself)
-// undirected helper (requires W: Clone to copy the weight)
+
+/*
+// still works on the structure above, W needs clone though (copy itself)
+// undirected helper (requires W: Clone to copy the weight). Need to debug it further,
+// ran into some issues when trying to call it, so used two directed edges instead
 impl<N, W: Clone> Graph<N, W> {
     pub fn add_undir_edge(&mut self, u: NodeId, v: NodeId, w: W) {
         self.add_edge(u, v, w.clone());
         self.add_edge(v, u, w);
     }
 }
-//unweighted BFS, ie, put all weights as 1
-pub fn bfs<N, W>(g: &Graph<N, W>, start: NodeId, target: NodeId) -> Vec<Option<NodeId>>{
-
-    let mut parent = vec![None; g.len()]; //option is like an enum, ie, parent may/may not exist
-    let mut q = VecDeque::new();
-    
-    parent[start] = Some(start); // 'some' is a an option constructor. Basically, avoid null pointers if it doesn't exist.
-                                 // ie, Some means that something has been found in the option
-    q.push_back(start);
-
-    //loop through the list O(v+e)
-    while let Some(u) = q.pop_front(){
-        if u == target {break;}
-        for &(v, _) in g.neighbors(u){
-            if parent[v].is_none() {
-                parent[v] = Some(u);
-                q.push_back(v);
-            }
-        }
-    }
-    parent //return parent
-}
-
-//function to build the shortest path
-pub fn build_path_from_parent(start: NodeId,dest: NodeId,parent: &[Option<NodeId>],) -> Vec<NodeId> {
-    let mut path = Vec::new();
-    let mut cur = Some(dest);
-
-    while let Some(v) = cur {
-        path.push(v);
-        if v == start { break; }
-        cur = parent[v];
-    }
-    path.reverse();
-    if path.first().copied() == Some(start) { path } else { Vec::new() }
-}
-
-use serde::{Serialize, Deserialize};
-#[derive(Serialize, Deserialize)]
-pub struct BfsResult {
-    start_user: String,
-    end_user: String,
-    path_nodes: Vec<String>,
-    path_ids: Vec<usize>,
-    distance: usize,
-}
+*/
