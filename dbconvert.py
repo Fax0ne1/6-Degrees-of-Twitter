@@ -7,6 +7,9 @@ cur.execute("CREATE TABLE IF NOT EXISTS users (username TEXT PRIMARY KEY)")
 cur.execute("CREATE TABLE IF NOT EXISTS followers (user TEXT, follower TEXT)")
 cur.execute("CREATE TABLE IF NOT EXISTS following (user TEXT, follows TEXT)")
 
+cur.execute("CREATE INDEX IF NOT EXISTS idx_followers_user ON followers(user)")
+cur.execute("CREATE INDEX IF NOT EXISTS idx_following_user ON following(user)")
+
 with open("accounts.txt", "r") as f:
     for line in f:
         line = line.strip()
