@@ -1,33 +1,34 @@
 import sys
 import json
 import os
+import sqlite3
 
+def find_user(fusername, db_name="accounts.db"):
+    """Find the user's line and return sets of followers/following (using a database)."""
 
-def find_user(fusername, filename="accounts.txt"):
-    """ Find the user's line and return sets of followers/following. """
-
+    # Locate the DB file relative to this script
     base_dir = os.path.dirname(os.path.abspath(__file__))
-    filepath = os.path.join(base_dir, filename)
-    #Locates the file from any place in file directory
+    db_path = os.path.join(base_dir, db_name)
 
-    with open(filepath, "r") as f: #opens the file for reading
-        
-        for fline in f: #iterates every line 
-            fline = fline.strip()
-            if not fline or ":" not in fline: #skips malformed lines 
-                continue
-                
-            name, data = fline.split(":", 1) #splits only at the first colon
-            
-            if name.strip() == fusername: #checks if the data parsed is our desired username
-                
-                followers_str, following_str = data.split("|") #splits data at divider. left is followers, right is following
-                
-                f_followers = set(followers_str.split(",")) if followers_str else set() 
-                f_following = set(following_str.split(",")) if following_str else set()
-                #splits followers and following at the , and makes each an element of a set
-                return f_followers, f_following
-    return None, None  #returns nothing if the length of the file was exhausted
+    # Connect to the SQLite database
+    conn = sqlite3.connect(db_path)
+    cur = conn.cursor()
+
+    # Fetch followers
+    cur.execute("SELECT follower FROM followers WHERE user = ?", (fusername,))
+    followers = {row[0] for row in cur.fetchall()}
+
+    # Fetch following
+    cur.execute("SELECT follows FROM following WHERE user = ?", (fusername,))
+    following = {row[0] for row in cur.fetchall()}
+
+    conn.close()
+
+    # If both empty, treat user as "not found" for output consistency
+    if not followers and not following:
+        return None, None
+
+    return followers, following
 
 
 for line in sys.stdin:
