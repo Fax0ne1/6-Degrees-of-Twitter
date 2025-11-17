@@ -1,0 +1,21 @@
+{
+  "start_user": "A",
+  "end_user": "H",
+  "path_nodes": [
+    "A",
+    "Z",
+    "O",
+    "C",
+    "R",
+    "H"
+  ],
+  "path_ids": [
+    0,
+    1,
+    8,
+    3,
+    10,
+    18
+  ],
+  "distance": 5
+}
