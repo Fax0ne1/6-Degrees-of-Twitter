@@ -248,7 +248,7 @@ pub fn pipeline() -> std::io::Result<()> {
 }
 
 
-/* 
+
 // helper: parse one accounts.tx style line and compute mutuals for the expected user
 //no longer used because it isn't plain text
 fn mutuals_from_accounts_line(line: &str, expected: &str) -> Option<Vec<String>> {
@@ -273,4 +273,3 @@ fn mutuals_from_accounts_line(line: &str, expected: &str) -> Option<Vec<String>>
     let mutuals: Vec<String> = followers.intersection(&following).cloned().collect();
     Some(mutuals)
 }
-*/
